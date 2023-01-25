@@ -1,7 +1,6 @@
 package com.sanket.model;
 
 
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
