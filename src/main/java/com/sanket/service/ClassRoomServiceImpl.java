@@ -46,7 +46,7 @@ public class ClassRoomServiceImpl implements ClassRoomService{
 			}
 		}
 		
-		if(flag == true) {
+		if(flag == true && requiredClassRoom != null) {
 			
 			List<Student> listOfStudent = requiredClassRoom.getListOfStudents();
 			
