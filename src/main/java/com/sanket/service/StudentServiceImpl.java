@@ -42,19 +42,21 @@ public class StudentServiceImpl implements StudentService {
 					
 				
 			}	
+				
 		}
+			
 			throw new ClassRoomException("Class room not found with this number " + classRoom);
-	}else {
-		
-		throw new StudentException("Please enter valid student details");
-		
-	}
+				
+		}else {
 			
+			throw new StudentException("Please enter valid student details");
 			
+		}
 	
-
-		
 		
 	}
+	
+	
+	
 	
 }

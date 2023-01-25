@@ -2,6 +2,8 @@ package com.sanket.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +14,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -31,6 +34,7 @@ public class Student {
 	private Integer studentStandard;
 	
 	@ManyToOne
+	@JsonIgnore
 	private ClassRoom classRoom;
 
 }
