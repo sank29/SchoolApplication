@@ -55,6 +55,78 @@ public class StudentServiceImpl implements StudentService {
 	
 		
 	}
+
+	@Override
+	public Student updateStudentClassRoom(Student student, Integer newClassRoom)
+			throws StudentException, ClassRoomException {
+		
+		ClassRoom newClassRoomStudentToBeAdded = null;
+		
+		if(student.getClassRoom().getClassRoomStandard() != newClassRoom) {
+			
+			List<ClassRoom> listOfClassRooms = classRoomDao.findAll();
+			
+			boolean flag = false;
+			
+			
+			for(ClassRoom eachClassRoom : listOfClassRooms) {
+				
+				if(eachClassRoom.getClassRoomStandard() == newClassRoom) {
+					
+					newClassRoomStudentToBeAdded = eachClassRoom;
+							
+					flag = true;
+					
+					break;
+					
+				}
+			}
+			
+			if(flag == true) {
+				
+				ClassRoom presentClassRoom = student.getClassRoom();
+				
+				List<Student> listOfStudent = presentClassRoom.getListOfStudents();
+				
+				int count = 0;
+				
+				for(Student eachStudent: listOfStudent) {
+					
+					if(eachStudent.getStudentRoll() == student.getStudentRoll()) {
+						
+						break;
+					}
+					count++;
+				}
+				
+				listOfStudent.remove(count);
+				
+				presentClassRoom.setListOfStudents(listOfStudent);
+				
+				classRoomDao.save(presentClassRoom);
+				
+				newClassRoomStudentToBeAdded.getListOfStudents().add(student);
+				
+				classRoomDao.save(newClassRoomStudentToBeAdded);
+				
+				
+				
+			}else {
+				
+				throw new ClassRoomException("No classroom find with this number " + newClassRoom);
+			}
+			
+		}else {
+			
+			throw new StudentException("Student already present in that class " + newClassRoom);
+		}
+		
+		
+		
+		return null;
+		
+		
+	}
 	
 	
 	
