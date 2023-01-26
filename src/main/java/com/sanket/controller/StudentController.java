@@ -38,5 +38,22 @@ public class StudentController {
 		
 		
 	}
+	
+	@PostMapping("/updateClassRoom/{newclassRoom}")
+	public ResponseEntity<String> updateStudentClassRoom(@RequestBody Student student, @PathVariable Integer newclassRoom) throws StudentException, ClassRoomException{
+		
+		if(student != null) {
+			
+			String result = studentServiceImpl.updateStudentClassRoom(student, newclassRoom);
+			
+			
+			return new ResponseEntity<String>(result, HttpStatus.CREATED);
+			
+		}else {
+			
+			throw new StudentException("Please enter valid details"); 
+			 
+		}
+	}
 
 }
