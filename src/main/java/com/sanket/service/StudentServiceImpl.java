@@ -57,8 +57,10 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student updateStudentClassRoom(Student student, Integer newClassRoom)
+	public String updateStudentClassRoom(Student student, Integer newClassRoom)
 			throws StudentException, ClassRoomException {
+		
+		System.out.println(student);
 		
 		ClassRoom newClassRoomStudentToBeAdded = null;
 		
@@ -109,7 +111,7 @@ public class StudentServiceImpl implements StudentService {
 				
 				classRoomDao.save(newClassRoomStudentToBeAdded);
 				
-				
+				return "Added";
 				
 			}else {
 				
@@ -121,9 +123,6 @@ public class StudentServiceImpl implements StudentService {
 			throw new StudentException("Student already present in that class " + newClassRoom);
 		}
 		
-		
-		
-		return null;
 		
 		
 	}
