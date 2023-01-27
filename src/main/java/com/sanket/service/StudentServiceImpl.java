@@ -62,6 +62,10 @@ public class StudentServiceImpl implements StudentService {
 		
 		System.out.println(student);
 		
+		return "done";
+		
+		/*
+		
 		ClassRoom newClassRoomStudentToBeAdded = null;
 		
 		if(student.getClassRoom().getClassRoomStandard() != newClassRoom) {
@@ -123,6 +127,7 @@ public class StudentServiceImpl implements StudentService {
 			throw new StudentException("Student already present in that class " + newClassRoom);
 		}
 		
+		*/
 		
 		
 	}
